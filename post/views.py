@@ -18,7 +18,7 @@ def post_list(request):
     List all post.
     """
     if request.method == 'GET':
-        if request.data['slug']
+        if request.data['slug'] != "":
             posts = Post.objects.all()
         else
             posts = Post.objects.get(slug=request.data['slug'])
