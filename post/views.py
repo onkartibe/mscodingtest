@@ -18,7 +18,11 @@ def post_list(request):
     List all post.
     """
     if request.method == 'GET':
-        posts = Post.objects.all()
+        if request.data['slug'] != ""
+            posts = Post.objects.all()
+        else
+            posts = Post.objects.get(slug=request.data['slug'])
+            
         serializer = PostSerializer(posts, many=True)
         return JsonResponse(serializer.data, safe=False)
 
