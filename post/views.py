@@ -13,15 +13,15 @@ from post.serializers import PostSerializer
 # Create your views here.
 
 @csrf_exempt
-def post_list(request):
+def post_list(request,slug=""):
     """
     List all post.
     """
     if request.method == 'GET':
-        if request.data['slug'] != "":
+        if slug == "":
             posts = Post.objects.all()
         else:
-            posts = Post.objects.get(slug=request.data['slug'])
+            posts = Post.objects.get(slug=slug)
             
         serializer = PostSerializer(posts, many=True)
         return JsonResponse(serializer.data, safe=False)
