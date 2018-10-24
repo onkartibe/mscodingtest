@@ -24,12 +24,12 @@ def post_list(request):
 
 
 @csrf_exempt
-def post_details(request,slug):
+def post_details(request):
     """
     Retrieve post details.
     """
     try:
-        post = Post.objects.get(slug=slug)
+        post = Post.objects.get(slug=request.data['slug'])
     except Post.DoesNotExist:
         return HttpResponse(status=404)
 
