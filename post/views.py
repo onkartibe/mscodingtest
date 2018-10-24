@@ -20,10 +20,11 @@ def post_list(request,slug=""):
     if request.method == 'GET':
         if slug == "":
             posts = Post.objects.all()
+            serializer = PostSerializer(posts, many=True)
         else:
             posts = Post.objects.get(slug=slug)
-            
-        serializer = PostSerializer(posts)
+            serializer = PostSerializer(posts)
+        
         return JsonResponse(serializer.data)
 
 
