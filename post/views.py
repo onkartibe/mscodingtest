@@ -21,23 +21,9 @@ def post_list(request,slug=""):
         if slug == "":
             posts = Post.objects.all()
             serializer = PostSerializer(posts, many=True)
+            return JsonResponse(serializer.data, safe=False)
         else:
             posts = Post.objects.get(slug=slug)
             serializer = PostSerializer(posts)
+            return JsonResponse(serializer.data)
         
-        return JsonResponse(serializer.data)
-
-
-@csrf_exempt
-def post_details(request):
-    """
-    Retrieve post details.
-    """
-    try:
-        post = Post.objects.get(slug=request.data['slug'])
-    except Post.DoesNotExist:
-        return HttpResponse(status=404)
-
-    if request.method == 'GET':
-        serializer = PostSerializer(post)
-        return JsonResponse(serializer.data)
