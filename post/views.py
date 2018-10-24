@@ -23,8 +23,8 @@ def post_list(request,slug=""):
         else:
             posts = Post.objects.get(slug=slug)
             
-        serializer = PostSerializer(posts, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        serializer = PostSerializer(posts)
+        return JsonResponse(serializer.data)
 
 
 @csrf_exempt
