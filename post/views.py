@@ -20,7 +20,7 @@ def post_list(request):
     if request.method == 'GET':
         if request.data['slug'] != "":
             posts = Post.objects.all()
-        else
+        else:
             posts = Post.objects.get(slug=request.data['slug'])
             
         serializer = PostSerializer(posts, many=True)
