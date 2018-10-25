@@ -13,6 +13,7 @@ from post.serializers import PostSerializer
 # Create your views here.
 
 @csrf_exempt
+#most common 5 word in the article
 def post_list(request,slug=""):
     """
     List all post.
