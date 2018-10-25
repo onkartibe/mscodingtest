@@ -47,5 +47,10 @@ module.exports = function(environment) {
     // here you can enable a production-specific feature
   }
 
+  ENV.APP.API_HOST = 'http://127.0.0.1:8000';
+
+  ENV.APP.usingCors = true;
+	ENV.APP.corsWithCreds = true;
+
   return ENV;
 };

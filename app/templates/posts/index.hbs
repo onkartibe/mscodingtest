@@ -1,0 +1,5 @@
+{{#each posts as |post|}}
+
+    <h3>{{#link-to 'posts.details' post.slug}}{{post.title}}{{/link-to}}</h3>
+
+{{/each}}
